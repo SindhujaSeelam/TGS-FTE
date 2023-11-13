@@ -1,0 +1,22 @@
+.wrapper{
+    width: 100%;
+}
+
+textarea{
+    width: 45%;
+    height: 45%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button{
+    margin: 0 10px;
+}
+
+h2{
+    color: greenyellow;
+    margin: auto;
+    display: block;
+    width: 25%;
+}

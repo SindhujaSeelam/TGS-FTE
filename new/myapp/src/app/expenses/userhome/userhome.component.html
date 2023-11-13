@@ -1,0 +1,118 @@
+<div class="home" *ngIf="home && !edit">
+  <div class="w3-bar w3-border w3-border-teal">
+    <nav class="navbar navbar-expand-sm bg-yellow navbar-dark w3-large py-sm-5">
+            <div class="topnav-centered" style="margin-left:auto; margin-right: auto;">
+             <h1 class="active" style="color: teal;">Personal Expenses Tracker</h1>
+            </div>      
+                      
+    </nav>
+    </div>
+</div>
+<div *ngIf="home">
+  <br><br>
+</div>
+<button *ngIf="home" class="btn btn-primary" style="font-size: 24px; border-radius: 8px; margin-left: auto; margin-right: auto; display: block;" (click)="activate()">New Expense</button>
+<div *ngIf="home">
+  <br>
+</div>
+
+
+
+<div class="wrapper" *ngIf="home && !edit">
+  <table mat-table [dataSource]="checkexpense" class="mat-elevation-z8">    
+  
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Expense Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="money">
+      <th mat-header-cell *matHeaderCellDef> Money </th>
+      <td mat-cell *matCellDef="let element"> {{element.money}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    
+
+    <ng-container matColumnDef="sno" >
+      <th mat-header-cell *matHeaderCellDef > </th>
+      <td mat-cell *matCellDef="let element">  </td>
+    </ng-container>
+
+    <!-- SNO:  -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button (click)="editactivate(row.sno)"> Edit </button>
+        <button mat-button style="background-color: red; color: white;" (click)="delete(row.sno)"> Delete </button>
+
+      </td>
+    </ng-container>
+    
+
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</div>
+  
+  
+
+ 
+  <!-- <table class="table" *ngIf="home">
+    <thead>
+      <tr>
+        <th scope="col">Expense Description</th>
+        <th scope="col">Money</th>
+        <th scope="col">Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        
+      <tr *ngFor="let i of expensedata">
+        <td>{{i.type}}</td>
+        <td>{{i.money}}</td>
+        <td>{{i.date}}</td>
+        <td><button class="btn btn-primary">Edit</button></td>
+      </tr>
+    </tbody>
+  </table> -->
+  <div *ngIf="!home">
+    <br><br><br>
+  </div>
+  <button *ngIf="!home" class="btn btn-warning" style="margin-left: auto; margin-right: auto; display: block;" (click)="back()">Back</button>
+  <div *ngIf="!home"> 
+    <br><br><br>
+  </div>
+  <app-mainpage *ngIf="!home" ></app-mainpage>
+
+
+<div class="host" *ngIf="edit"> 
+
+  <mat-form-field >
+    <mat-label>Expense Description</mat-label>
+    <input type="text" [(ngModel)]="editdata.type" matInput value="{{editdata.type}}" >
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Money</mat-label>
+    <input type="text" [(ngModel)]="editdata.money" matInput value="{{editdata.money}}" >
+  </mat-form-field>
+  
+  <mat-form-field >
+    <mat-label>Date(YYYY-MM-DD)</mat-label>
+    <input type="text" [(ngModel)]="editdata.date" matInput value="{{editdata.date}}" >
+  </mat-form-field>
+ 
+  <button mat-raised-button (click)="onSubmit(editdata)">Submit</button>
+
+</div>
+  
+
+
+<canvas id="myChart" width="400" height="400"></canvas>

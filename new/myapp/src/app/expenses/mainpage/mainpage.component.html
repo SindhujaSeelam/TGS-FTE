@@ -1,0 +1,47 @@
+<h2 *ngIf="successtag"> Inserted   Successfully 
+   <br> Click reset to add new one
+</h2>
+<div class="wrapper">
+<form #f="ngForm">
+        <mat-stepper #stepper>
+            <mat-step label="Expense Description" completed="false"> 
+        
+                <br><br><br>
+                <textarea 
+                name="type" id="" cols="1" rows="8" 
+                class="form-control" placeholder="Description"
+                ngModel required
+                ></textarea>
+
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </mat-step>
+        
+            <mat-step label="Money Spent">
+                <br><br><br>
+                <input type="number"  placeholder="Enter the money spent"  style="height: 70px; width: 200px; margin-left: auto; margin-right:auto; display: block;"   name="money" ngModel required> 
+                <br><br><br><br>
+                <div>
+                    <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                
+                </div>
+
+
+            </mat-step>
+        
+            <mat-step label="Date ">
+                <br><br><br><br>
+                <input type="date" name="date" style="height: 70px; width: 200px; margin-left: auto; margin-right:auto; display: block;" ngModel required>
+                <br><br><br><br>
+                <div>
+                    <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
+                    <button mat-raised-button color="primary" type="reset" (click)="stepper.reset()">reset</button>
+                    <button class="btn btn-warning" style="margin-left: auto; margin-bottom: 0%; margin-top: 2px; margin-right: auto; display: block;" type="reset" [disabled]="!f.valid" (click)="stepper.reset()" (click)="passdata(f.value,f)">Submit</button>
+                
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </form>
+</div>
+
+

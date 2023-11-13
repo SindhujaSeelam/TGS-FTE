@@ -1,0 +1,122 @@
+<div class="home">
+    <div class="w3-bar w3-border w3-border-teal">
+      <nav class="navbar navbar-expand-sm bg-yellow navbar-dark w3-large py-sm-5">
+              <div class="topnav-centered" style="margin-left:auto; margin-right: auto;">
+               <h1 class="active" style="color: teal;">Personal Expenses Tracker</h1>
+              </div>      
+                        
+      </nav>
+      </div>
+</div>
+
+
+
+
+
+
+<!-- userlogin -->
+
+<section class="vh-100" *ngIf="login" >
+    <div class="container py-5 h-100">
+      <div
+        class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <h3 class="mb-5">User Login</h3>
+              <h3 class="mb-5" *ngIf="invalid">
+                <p style="color:red">Invalid</p>
+              </h3>
+              <h3 class="mb-5" *ngIf="invalid">
+                <p style="color: green"> Didn't Register Before?<br>Please Do Register</p>
+              </h3>
+              <form #f="ngForm">
+                <div class="form-outline mb-4">
+                  <input name="email" type="email" id="typeEmailX-2"
+                    class="form-control form-control-lg" ngModel required /> 
+                    <label
+                    class="form-label" for="typeEmailX-2">Username</label>
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <input name="password" type="password" id="typePasswordX-2"
+                    class="form-control form-control-lg" ngModel required /> 
+                    <label
+                    class="form-label" for="typePasswordX-2">Password</label>
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit"
+                [disabled]="!f.valid"
+                (click)="onchecklogin(f.value)">Login</button>
+                <br><br><br>
+                <p>
+                  Don't have an account? <button class="btn btn-primary btn-sm " (click)="onregister()">Register
+                    here</button>
+                </p>
+  
+                <hr class="my-4">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- register page -->
+
+  <div class="container my-5 py-5" *ngIf="takedetailsvar">
+    <div class="row d-flex justify-content-center py-5">
+        <div class="col-md-7">
+    <div class="card">
+        <div class="card-body p-4">
+  <form #f="ngForm">
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+            <label class="form-label" for="form6Example1"> Name</label>
+          <input type="text" name="name" id="form6Example1" class="form-control" size="8" ngModel required/>
+        
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+            <label class="form-label" for="form6Example2">Age</label>
+          <input type="text" name="age" id="form6Example2" class="form-control"ngModel required />
+       
+        </div>
+      </div>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form6Example6">Phone</label>
+    <input type="number" name="phone" id="form6Example6" class="form-control" ngModel required/>
+   
+  </div> <div class="form-outline mb-4">
+    <label class="form-label" for="form6Example6">Username</label>
+  <input type="email" name="email" id="form6Example6" class="form-control" ngModel required/>
+  
+  </div>
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example6">Password</label>
+      <input type="password" name="password" id="form6Example6" class="form-control" ngModel required/>
+      <br><br><br><br>
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary btn-block mb-4"(click)="registeruser(f.value)"
+    [disabled]="!f.valid">Register</button>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+<!-- 
+  <app-multiform></app-multiform> -->
+<app-userhome *ngIf="main"></app-userhome>
